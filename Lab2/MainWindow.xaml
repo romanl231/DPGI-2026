@@ -3,43 +3,45 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         Title="TextEditor" Height="450" Width="600">
-    <Window.Resources>
+     <Window.Resources>
         <LinearGradientBrush x:Key="LinearPanelBrush" StartPoint="0,0" EndPoint="1,0">
             <GradientStop Color="Yellow" Offset="0"/>
             <GradientStop Color="SkyBlue" Offset="0.5"/>
             <GradientStop Color="Yellow" Offset="1"/>
         </LinearGradientBrush>
-
         <Style TargetType="Button">
             <Setter Property="Margin" Value="5"/>
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderBrush" Value="White"/>
         </Style>
     </Window.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
-        <Border Grid.Row="0" Background="{StaticResource LinearPanelBrush}" BorderBrush="#FFCBBEBE" BorderThickness="2" CornerRadius="10" Margin="4">
-            <StackPanel Orientation="Horizontal">
-                <Button Style="{x:Null}" ToolTip="Відкрити" Width="40" Height="40" Margin="4">
+
+        <Border Grid.Row="0" BorderBrush="#FFCBBEBE" BorderThickness="2" CornerRadius="10"
+                Margin="4" Background="{StaticResource LinearPanelBrush}">
+            <StackPanel Orientation="Horizontal" FocusManager.IsFocusScope="True">
+                <Button ToolTip="Відкрити" Width="40" Height="40" Command="Open">
                     <iconPacks:PackIconMaterial Kind="FolderOpen"/>
                 </Button>
-                <Button Style="{x:Null}" ToolTip="Стерти" Width="40" Height="40" Margin="4">
+                <Button ToolTip="Стерти" Width="40" Height="40" Command="Delete">
                     <iconPacks:PackIconMaterial Kind="Delete"/>
                 </Button>
-                <Button Style="{x:Null}" ToolTip="Копіювати" Width="40" Height="40" Margin="4">
+                <Button ToolTip="Копіювати" Width="40" Height="40" Command="Copy">
                     <iconPacks:PackIconMaterial Kind="ContentCopy"/>
                 </Button>
-                <Button Style="{x:Null}" ToolTip="Вставити" Width="40" Height="40" Margin="4">
+                <Button ToolTip="Вставити" Width="40" Height="40" Command="Paste">
                     <iconPacks:PackIconMaterial Kind="ContentPaste"/>
                 </Button>
             </StackPanel>
         </Border>
-        
-        <Border Grid.Row="1" Background="{StaticResource LinearPanelBrush}" BorderBrush="#FFCBBEBE" BorderThickness="2" CornerRadius="10" Margin="4">
+
+        <Border Grid.Row="1" BorderBrush="#FFCBBEBE" BorderThickness="2" CornerRadius="10"
+                Margin="4" Background="{StaticResource LinearPanelBrush}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -49,10 +51,16 @@
                 <TextBox Grid.Row="0" Name="txtDocument" Margin="8"
                          VerticalScrollBarVisibility="Visible"
                          TextWrapping="Wrap"
-                         AcceptsReturn="True"/>
+                         AcceptsReturn="True"
+                         FontSize="{Binding ElementName=fontSlider, Path=Value}"/>
 
                 <DockPanel Grid.Row="1" Margin="8">
-                    <Button DockPanel.Dock="Right" Style="{x:Null}" Width="60">OK</Button>
+                    <Label DockPanel.Dock="Left" VerticalAlignment="Center">Розмір шрифту:</Label>
+                    <Slider Name="fontSlider" DockPanel.Dock="Left"
+                            Margin="4" MinWidth="100"
+                            Minimum="12" Maximum="100" Value="14"/>
+                    <Button DockPanel.Dock="Right" Width="60"
+                            Style="{x:Null}" Command="Save">OK</Button>
                 </DockPanel>
             </Grid>
         </Border>
