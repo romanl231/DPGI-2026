@@ -1,0 +1,75 @@
+# ======================
+# Build output
+# ======================
+bin/
+obj/
+out/
+publish/
+*.dll
+*.exe
+*.pdb
+
+# ======================
+# User-specific files
+# ======================
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider / JetBrains
+.idea/
+*.sln.iml
+
+# Visual Studio
+.vs/
+
+# ======================
+# ASP.NET / .NET Core
+# ======================
+appsettings.Development.json
+appsettings.*.local.json
+
+# Secret storage
+secrets.json
+*.Secrets.json
+
+# ======================
+# Logs
+# ======================
+*.log
+logs/
+
+# ======================
+# NuGet
+# ======================
+*.nupkg
+.nuget/
+packages/
+
+# Optional: if using old-style packages.config
+**/packages/*
+
+# ======================
+# OS files
+# ======================
+.DS_Store
+Thumbs.db
+
+# ======================
+# Test / coverage
+# ======================
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
+
+# ======================
+# Docker (optional)
+# ======================
+docker-compose.override.yml
+
+# ======================
+# EF Core migrations cache (optional cleanup)
+# ======================
+Migrations/*Designer.cs~
