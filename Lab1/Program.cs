@@ -5,5 +5,5 @@ public class Program
     /// <summary>
     /// Entry point of the program.
     /// </summary>
-    public static void Main(string[] args) => Console.WriteLine("Hello, World!");
+    public static void Main(string[] args) => Hello.SayIt();
 }
